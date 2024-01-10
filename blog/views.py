@@ -1,8 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
+# from django.http import HttpResponse
 from .models import Post
 # from . import views
 # from django.views.generic import TemplateView
+
+
+# def Index(request):
+#     return HttpResponse("Hello world")
 
 
 class PostList(generic.ListView):
@@ -14,8 +19,8 @@ class PostList(generic.ListView):
     """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'blog/index.html'
-    paginated_by = 12
+    template_name = 'index.html'
+    paginated_by = 6
 
 
 class PostDetail(View):

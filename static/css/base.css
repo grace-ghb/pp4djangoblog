@@ -21,13 +21,13 @@ body {
     height: 100%;
 }
 
-body {
+/* body {
     display: flex;
     flex-direction: column;
     background-color: #F9FAFC;
     font-family: var(--main-font);
     color: grey;
-}
+} */
 
 
 
@@ -39,12 +39,12 @@ h5,
 h6 {
     font-family: var(--title);
 }
-
 main {
     flex: 1 0 auto;
     background-color: yellow; 
-}
-/*
+} 
+
+
 .card {
     border: none;
     background-color: transparent;
@@ -66,7 +66,7 @@ main {
     color: white;
     margin: 4px;
     text-transform: uppercase;
-} */
+} 
 
 
 
@@ -158,7 +158,7 @@ img.logo {
 .card {
     border: none;
     /* background-color: transparent; */
-    background-color: yellow;
+    background-color: rgb(93, 0, 255);
 
 }
 
