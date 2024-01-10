@@ -19,12 +19,14 @@ class PostList(generic.ListView):
     """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
-    paginated_by = 6
+    template_name = 'blog/index.html'
+    paginated_by = 3
 
 
 class PostDetail(View):
-
+    """
+    This will render the comments templates.
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)

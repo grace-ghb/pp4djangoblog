@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-
+import django_heroku
 if os.path.isfile("env.py"):
     import env
 
@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['pp4djangoblog-fe76bee41e28.herokuapp.com', '8000-graceghb-pp4djangoblog-lykuf17li53.ws-eu107.gitpod.io', 'localhost']
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,6 +131,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Activate Django-Heroku
+django_heroku.settings(locals())
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -140,8 +145,9 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 # 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
