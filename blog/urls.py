@@ -8,6 +8,6 @@ urlpatterns = [
     # path('', Index, name='blog'),
     # We add as_view() because we use class in PostList.
     path('', views.PostList.as_view(), name='home'),
-    # path('<slug:slug>', views.PostDetail.as_view(), name='post_detail'),
+    path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
   
 ]
